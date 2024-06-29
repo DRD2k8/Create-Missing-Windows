@@ -1,11 +1,13 @@
 package com.drd.createwindows;
 
+import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -29,10 +31,23 @@ public class CreateMissingWindows {
 
         modEventBus.addListener(this::commonSetup);
 
+        modEventBus.addListener(this::addCreative);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+    }
+
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == AllCreativeModeTabs.BUILDING_BLOCKS_TAB.getKey())
+            event.accept(ModBlocks.CHERRY_WINDOW.get());
+        if (event.getTabKey() == AllCreativeModeTabs.BUILDING_BLOCKS_TAB.getKey())
+            event.accept(ModBlocks.BAMBOO_WINDOW.get());
+        if (event.getTabKey() == AllCreativeModeTabs.BUILDING_BLOCKS_TAB.getKey())
+            event.accept(ModBlocks.CHERRY_WINDOW_PANE.get());
+        if (event.getTabKey() == AllCreativeModeTabs.BUILDING_BLOCKS_TAB.getKey())
+            event.accept(ModBlocks.BAMBOO_WINDOW_PANE.get());
     }
 
     @SubscribeEvent
