@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "createwindows:block/bamboo_window"
+    }
+  }
+}

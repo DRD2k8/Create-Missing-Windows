@@ -1,5 +1,7 @@
 package com.drd.createwindows;
 
+import com.simibubi.create.foundation.data.CreateRegistrate;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -14,8 +16,14 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class CreateMissingWindows {
     public static final String MODID = "createwindows";
 
+    public static final CreateRegistrate REGISTRATE = CreateRegistrate.create("createwindows");
+
     public CreateMissingWindows() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        REGISTRATE.registerEventListeners(modEventBus);
+
+        ModBlocks.register();
 
         modEventBus.addListener(this::commonSetup);
 
@@ -35,5 +43,9 @@ public class CreateMissingWindows {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
         }
+    }
+
+    public static ResourceLocation asResource(String path) {
+        return new ResourceLocation("createwindows", path);
     }
 }
