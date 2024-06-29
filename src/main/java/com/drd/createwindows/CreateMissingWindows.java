@@ -1,6 +1,8 @@
 package com.drd.createwindows;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -42,6 +44,10 @@ public class CreateMissingWindows {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CHERRY_WINDOW.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.BAMBOO_WINDOW.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CHERRY_WINDOW_PANE.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.BAMBOO_WINDOW_PANE.get(), RenderType.cutoutMipped());
         }
     }
 
